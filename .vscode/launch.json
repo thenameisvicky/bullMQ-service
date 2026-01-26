@@ -1,3 +1,31 @@
 {
-    
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Main",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node",
+                "dist/server.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "name": "Run Consumer",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node",
+                "dist/queue/server.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
 }

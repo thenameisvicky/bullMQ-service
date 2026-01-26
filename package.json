@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "tsc",
+    "build:w": "tsc --watch"
+  },
   "dependencies": {
     "bullmq": "^5.67.1",
     "express": "^5.2.1",
