@@ -23,6 +23,13 @@
 
 # Data flow
 
-```Mermaid diagram
-   clinent(request) -> Main(enques) -> Queue consumer(req calls fastAPI) -> Inference service (response) -> Main (same API) -> client (response)
-```
+flowchart LR
+    Client -->|Prompt| API[Express API]
+    API -->|Enqueue Job| Queue[BullMQ]
+    Queue --> Redis[(Redis)]
+    Redis --> Worker[Queue Consumer]
+    Worker -->|HTTP Call| Inference[FastAPI Inference Service]
+    Inference -->|Generated Text| Worker
+    Worker -->|Store Result| Redis
+    Client -->|Poll Result| API
+    API -->|Fetch Result| Redis
