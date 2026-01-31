@@ -8,15 +8,16 @@ import { Queue } from 'bullmq';
  */
 
 const app = express();
+const PORT = process.env.PORT;
+
 app.use(express.json());
 
 const queue = new Queue('LLM_INFERENCE', {
     connection: {
-        host: '127.0.0.1',
-        port: 6379,
+        host: process.env.REDIS_HOST,
+        port: Number(process.env.REDIS_PORT)
     }
 })
-
 
 /**
  * POST /api/v1/chat
@@ -37,6 +38,6 @@ app.post('/api/v1/req', async (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log("Application Listening on port 3000");
+app.listen(PORT, () => {
+    console.log(`Application Listening on port ${PORT}`);
 })

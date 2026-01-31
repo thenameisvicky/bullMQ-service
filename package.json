@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "tsc",
-    "build:w": "tsc --watch"
+    "build:w": "tsc --watch",
+    "docker:build": "docker build -t llm-server -t llm-consumer ."
   },
   "dependencies": {
     "bullmq": "^5.67.1",

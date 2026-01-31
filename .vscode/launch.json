@@ -12,7 +12,10 @@
             ],
             "skipFiles": [
                 "<node_internals>/**"
-            ]
+            ],
+            "env": {
+                "PORT": "3000",
+            }
         },
         {
             "name": "Run Consumer",
@@ -25,7 +28,11 @@
             ],
             "skipFiles": [
                 "<node_internals>/**"
-            ]
+            ],
+            "env": {
+                "REDIS_HOST": "127.0.0.1",
+                "REDIS_PORT": "6379",
+            }
         }
     ]
 }
