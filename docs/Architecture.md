@@ -1,7 +1,7 @@
 # Architecture Explanation
 
 - I have implemented microservice architecture.
-- Microservice architecture because i need to run python script for LLM inference, and as the Queue system is built in javascript, architecturally this is not best cause the services will be coupled and this will make your life harder.
+- Microservice architecture because i need to run python server for LLM inference, and as the Queue system is built in javascript, architecturally this is best cause the services will be not be coupled and this will make your life easier.
 
 # Tech stack and Reasoning
 

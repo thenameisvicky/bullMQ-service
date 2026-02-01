@@ -12,9 +12,17 @@ const worker = new Worker("LLM_INFERENCE", async job => {
     /**
      * Replace with inference API
      */
-    await new Promise(r => setTimeout(r, 1000));
+    const response = await fetch(`http://${process.env.INFERENCE_HOST}:${process.env.INFERENCE_PORT}/api/v1/infer`, {
+        method: 'POST',
+        body: JSON.stringify({
+            message: job.data.message
+        })
+    });
 
-    console.log("Job completed:", job.id);
+    const data = await response.json();
+
+    console.log("Job completed:", job.id, data);
+
 }, {
     connection: {
         host: process.env.REDIS_HOST,
