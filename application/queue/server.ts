@@ -9,6 +9,9 @@ import { Worker } from 'bullmq';
 const worker = new Worker("LLM_INFERENCE", async job => {
     const response = await fetch(`http://${process.env.INFERENCE_HOST}:${process.env.INFERENCE_PORT}/api/v1/infer`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             prompt: job.data.prompt
         })
