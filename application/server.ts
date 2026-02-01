@@ -27,10 +27,10 @@ const queue = new Queue('LLM_INFERENCE', {
  */
 
 app.post('/api/v1/req', async (req, res) => {
-    const { message } = req.body;
+    const { prompt } = req.body;
 
     const job = await queue.add("TEXT_GENERATION", {
-        message: message
+        prompt: prompt
     });
 
     return res.json({

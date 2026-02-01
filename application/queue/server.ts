@@ -7,22 +7,16 @@ import { Worker } from 'bullmq';
  */
 
 const worker = new Worker("LLM_INFERENCE", async job => {
-    console.log(`Consuming...Job-${job.id} Payload-${JSON.stringify(job.data)}`);
-
-    /**
-     * Replace with inference API
-     */
     const response = await fetch(`http://${process.env.INFERENCE_HOST}:${process.env.INFERENCE_PORT}/api/v1/infer`, {
         method: 'POST',
         body: JSON.stringify({
-            message: job.data.message
+            prompt: job.data.prompt
         })
     });
 
     const data = await response.json();
 
-    console.log("Job completed:", job.id, data);
-
+    console.log(`Job completed: ${job.id} - ${JSON.stringify(data)}`);
 }, {
     connection: {
         host: process.env.REDIS_HOST,
