@@ -39,6 +39,45 @@
                 "INFERENCE_HOST": "127.0.0.1",
                 "INFERENCE_PORT": "8080"
             }
+        },
+        {
+            "name": "Run Prometheus",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node",
+                "dist/metrics/prometheus/server.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "REDIS_HOST": "127.0.0.1",
+                "REDIS_PORT": "6379",
+                "INFERENCE_HOST": "127.0.0.1",
+                "INFERENCE_PORT": "8080",
+                "PORT": "9095"
+            }
+        },
+        {
+            "name": "Run Elastic",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npx",
+            "runtimeArgs": [
+                "ts-node",
+                "dist/metrics/elastic/server.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "REDIS_HOST": "127.0.0.1",
+                "REDIS_PORT": "6379",
+                "INFERENCE_HOST": "127.0.0.1",
+                "INFERENCE_PORT": "8080"
+            }
         }
     ]
 }

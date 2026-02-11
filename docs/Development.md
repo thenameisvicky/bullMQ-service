@@ -1,16 +1,17 @@
 # Roadmap
 
-## Phase 1 – Baseline Inference (Current)
+## Phase 1 – Baseline Inference
 
 - Queue-based job processing
 - CPU-only LLM inference
-- Internal webhook for results
+- Log metrics in elastic
 
 ## Phase 2 – Observability
 
 - Prometheus metrics
 - p95 latency tracking
 - CPU and memory dashboards
+- Every thing in kiabana no grafana
 
 ## Phase 3 – Backpressure & Stability
 
@@ -22,6 +23,7 @@
 
 - Token streaming via SSE
 - Time-to-first-token optimization
+- Only after implementing dashboard
 
 ## Phase 5 – Scaling Experiments
 
@@ -35,9 +37,12 @@
 - Has end point which receives request and streams the response to client.
 - `api/v1/req` is REST API which gets upgradede to stream when response is here until then this pings with client.
 - Basically this end point is similar the the CDN end point that serves the HTML via streaming.
+- Will implement this streaming logic after dashboard is done.
 
 ## Queue system
 
 - For now only one Queue`LLM_INFERENCE` and consumer.
 - Consumer receives the Job and executes it.
-- 
+
+## Metrics system
+

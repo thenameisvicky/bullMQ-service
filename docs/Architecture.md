@@ -30,6 +30,5 @@ flowchart LR
     Redis --> Worker[Queue Consumer]
     Worker -->|HTTP Call| Inference[FastAPI Inference Service]
     Inference -->|Generated Text| Worker
-    Worker -->|Store Result| Redis
-    Client -->|Poll Result| API
-    API -->|Fetch Result| Redis
+    Worker -->|Store Metrics| Redis
+    Elastic & Prometheus API -->|Fetch Result| Redis
